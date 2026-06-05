@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <title>Heaven Brownies</title>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    .fade-in {
+      animation: fade 1s ease-in;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="bg-black flex justify-center items-center min-h-screen p-4">
+
+  <div class="bg-[#0f0f0f] w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden border border-gray-800 fade-in hover:shadow-yellow-500/10">
+
+    <!-- HERO SECTION FIX -->
+    <div class="h-52 bg-[#1a1a1a] bg-cover bg-center relative rounded-t-3xl"
+      style="background-image: url('https://images.unsplash.com/photo-1606312619070-d48b4c652a52');">
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90"></div>
+
+      <!-- TEXT POSITION MAATHIYACHU (Top-Left) -->
+      <div class="absolute top-6 left-6 text-white z-10">
+        <h2 class="text-2xl font-bold tracking-wide leading-tight">One Bite.<br>Full Addiction.</h2>
+        <p class="text-xs text-yellow-400 mt-1.5 font-medium tracking-wider">FRESHLY BAKED DAILY 🍫</p>
+      </div>
+    </div>
+
+    <!-- LOGO -->
+    <div class="flex justify-center -mt-12 relative z-10">
+      <div class="w-24 h-24 rounded-full border-4 border-[#0f0f0f] bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
+        <span class="text-black text-3xl font-bold">HB</span>
+      </div>
+    </div>
+
+    <!-- BRAND -->
+    <div class="text-center px-6 py-4">
+      <h1 class="text-2xl font-semibold text-white">Heaven Brownies</h1>
+      <p class="text-gray-400 text-sm mt-2">Premium Homemade Brownies 🤤</p>
+    </div>
+
+    <!-- TRUST -->
+    <p class="text-xs text-gray-500 text-center mb-2">
+      ⭐ 100+ Happy Customers
+    </p>
+
+    <!-- BEST SELLERS -->
+    <div class="px-6 pb-2">
+      <h3 class="text-yellow-400 text-sm mb-2">🔥 Best Sellers</h3>
+      <p class="text-gray-300 text-sm leading-6">
+        • Choco Lava 🤤 <br>
+        • Walnut Crunch 🌰 <br>
+        • Eggless Classic 🍫
+      </p>
+
+      <p class="text-xs text-gray-400 mt-2">
+        Starting from ₹99 only 💥
+      </p>
+
+      <div class="flex flex-wrap gap-2 mt-3">
+        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full text-gray-300">Eggless</span>
+        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full text-gray-300">Fresh Daily</span>
+        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full text-gray-300">Premium Cocoa</span>
+      </div>
+    </div>
+
+    <!-- URGENCY -->
+    <p class="text-center text-xs text-red-400 mt-3">
+      ⚡ Limited slots today – Order before 8 PM
+    </p>
+
+    <!-- BUTTONS -->
+    <div class="px-6 space-y-4 pb-8 mt-3">
+
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20order%20brownies"
+        class="btn w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl flex justify-center shadow-lg shadow-green-500/40">
+        🔥 Order Fresh Brownies Now
+      </a>
+
+      <a href="https://instagram.com/yourpage"
+        class="btn w-full bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-semibold py-3 rounded-xl flex justify-center shadow-lg">
+        📸 Explore Menu on Instagram
+      </a>
+
+      <button onclick="openMenu()"
+        class="btn w-full border border-yellow-500 text-yellow-400 font-semibold py-3 rounded-xl hover:bg-yellow-500 hover:text-black transition">
+        🍩 View Full Menu
+      </button>
+
+      <div class="w-full bg-gray-800 text-white font-medium py-3 rounded-xl flex justify-center">
+        📍 Madurai
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="bg-black text-center py-3 text-xs text-gray-500">
+      Made with ❤️ & Chocolate
+    </div>
+  </div>
+
+  <!-- MENU POPUP -->
+  <div id="menuPopup" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50 px-4">
+
+    <div class="bg-[#1a1a1a] rounded-xl w-full max-w-sm text-white max-h-[80vh] flex flex-col border border-gray-700 shadow-2xl">
+
+      <!-- HEADER -->
+      <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-yellow-400">🍫 Full Menu</h2>
+        <button onclick="closeMenu()" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+      </div>
+
+      <!-- MENU ITEMS -->
+      <div class="p-4 overflow-y-auto">
+        <ul class="text-sm space-y-3">
+
+          <!-- ITEM -->
+          <li class="flex justify-between items-center border-b border-gray-800 pb-2">
+            <span>Classic Brownie</span>
+            <div class="flex items-center gap-2">
+              <span>₹99</span>
+              <button onclick="orderItem('Classic Brownie - ₹99')" class="text-xs bg-green-500 px-2 py-1 rounded">Order</button>
+            </div>
+          </li>
+
+          <li class="flex justify-between items-center border-b border-gray-800 pb-2">
+            <span>Choco Lava</span>
+            <div class="flex items-center gap-2">
+              <span>₹149</span>
+              <button onclick="orderItem('Choco Lava - ₹149')" class="text-xs bg-green-500 px-2 py-1 rounded">Order</button>
+            </div>
+          </li>
+
+          <li class="flex justify-between items-center border-b border-gray-800 pb-2">
+            <span>Walnut Brownie</span>
+            <div class="flex items-center gap-2">
+              <span>₹129</span>
+              <button onclick="orderItem('Walnut Brownie - ₹129')" class="text-xs bg-green-500 px-2 py-1 rounded">Order</button>
+            </div>
+          </li>
+
+          <li class="flex justify-between items-center border-b border-gray-800 pb-2">
+            <span>Nutella Fudge</span>
+            <div class="flex items-center gap-2">
+              <span>₹159</span>
+              <button onclick="orderItem('Nutella Fudge - ₹159')" class="text-xs bg-green-500 px-2 py-1 rounded">Order</button>
+            </div>
+          </li>
+
+          <li class="flex justify-between items-center border-b border-gray-800 pb-2">
+            <span>Lotus Biscoff</span>
+            <div class="flex items-center gap-2">
+              <span>₹179</span>
+              <button onclick="orderItem('Lotus Biscoff - ₹179')" class="text-xs bg-green-500 px-2 py-1 rounded">Order</button>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="p-4 border-t border-gray-800">
+        <button onclick="closeMenu()"
+          class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-lg">
+          Close Menu
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function openMenu() {
+      document.getElementById("menuPopup").classList.remove("hidden");
+    }
+
+    function closeMenu() {
+      document.getElementById("menuPopup").classList.add("hidden");
+    }
+
+    function orderItem(item) {
+      const phone = "91XXXXXXXXXX"; // replace
+      const message = `Hi, I want to order: ${item}`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
